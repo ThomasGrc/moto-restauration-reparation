@@ -1,0 +1,13 @@
+<div class="project">
+  <h2>{{ blok.titre }}</h2> <!-- 👈 "titre" from Storyblok -->
+
+  <p>{{ blok.description }}</p>
+
+  @if (blok.Images?.length) {
+    <div class="images">
+      @for img of blok.Images {
+        <img [src]="img.filename" [alt]="img.alt || blok.titre" />
+      }
+    </div>
+  }
+</div>
