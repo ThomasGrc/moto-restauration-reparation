@@ -9,7 +9,6 @@ export class StoryblokService {
   });
 
   getProjects() {
-    // 👇 matches your slug "project"
     return this.sb.get('cdn/stories', {
       version: 'draft'
     });
