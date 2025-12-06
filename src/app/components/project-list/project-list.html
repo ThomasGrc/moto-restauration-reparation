@@ -1,0 +1,8 @@
+<h1 class="headline">Nos projets</h1>
+<ul>
+  @for (project of projects(); track project) {
+    @if (project.slug !== 'home') {
+        <li><app-project [blok]="project" ></app-project></li>
+    }
+    }
+</ul>

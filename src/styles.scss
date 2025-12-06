@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+}
+
+html {
+    margin: 0;
+}
+
+:root {
+    --font-headline: "Staatliches", sans-serif;
+    --font-primary: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.05em;
+}
+
+h1 {
+    font-family: var(--font-headline);
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.15em;
+
+    position: relative;
+    display: inline-block;
+}
+
+/* Overlapping underline */
+h1::after {
+    content: '';
+    position: absolute;
+    left: -0.15em;
+    right: -0.15em;
+    bottom: 0.1em;
+    width: 120%;
+    /* 👈 controls overlap */
+
+    height: 0.35em;
+    background: #e10600;
+    /* red underline */
+    z-index: -1;
+}

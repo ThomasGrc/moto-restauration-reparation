@@ -1,0 +1,136 @@
+.project {
+    max-width: 420px;
+    margin: 0.75rem auto;
+    padding: 0.9rem;
+    border-radius: 0.9rem;
+    background: #0f1015;
+    color: #f7f7f7;
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(255, 255, 255, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Title */
+.project h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* Description */
+.project p {
+    margin: 0;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    opacity: 0.8;
+}
+
+/* Carousel */
+.project-images {
+    display: flex;
+    gap: 0.6rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 0.25rem;
+
+    scrollbar-width: none;
+}
+
+.project-images::-webkit-scrollbar {
+    display: none;
+}
+
+/* Image card */
+.project-image {
+    flex: 0 0 75%;
+    scroll-snap-align: center;
+    aspect-ratio: 4 / 3;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: #1a1b27;
+}
+
+/* Image */
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Desktop hover (subtle) */
+@media (hover: hover) {
+    .project-image:hover img {
+        transform: scale(1.025);
+    }
+}
+
+/* Lightbox overlay */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: zoom-out;
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 0.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+}
+
+.carousel-wrapper {
+  position: relative;
+}
+
+/* Arrows */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(15, 16, 21, 0.75);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.carousel-arrow:hover {
+  background: rgba(15, 16, 21, 0.95);
+}
+
+.carousel-arrow.left {
+  left: -12px;
+}
+
+.carousel-arrow.right {
+  right: -12px;
+}
+
+/* Make sure images don't hide behind arrows */
+.project-images {
+  padding: 0 1.75rem;
+}

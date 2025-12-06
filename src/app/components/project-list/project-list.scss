@@ -1,0 +1,42 @@
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+li {
+  display: flex;
+}
+
+/* Default card width (desktop / multiple columns) */
+li app-project {
+  width: 360px;
+}
+
+/* ✅ When only one card fits per row */
+@media (max-width: 800px) {
+  li {
+    flex: 1 1 90%;
+    justify-content: center;
+  }
+
+  li app-project {
+    width: 90%;
+    max-width: 90%;
+  }
+}
+
+.headline {
+  font-family: var(--font-headline);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.15em;
+  text-align: center;
+  margin: 1rem;
+  
+}

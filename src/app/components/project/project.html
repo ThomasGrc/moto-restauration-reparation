@@ -1,6 +1,38 @@
 <div class="project">
-  <h2>{{ blok.titre }}</h2>
+  <h2>{{ blok().name }}</h2>
+  <p>{{ blok().content.description }}</p>
 
-  <p>{{ blok.description }}</p>
+  <div class="carousel-wrapper">
+    <!-- Left arrow -->
+    <button class="carousel-arrow left" (click)="scrollLeft()">
+      ‹
+    </button>
 
+    <!-- Images -->
+    <div class="project-images" #carousel>
+      @for (image of blok().content.Images; track image.id) {
+        <figure
+          class="project-image"
+          (click)="openImage(image.filename)"
+        >
+          <img
+            [src]="image.filename"
+            [alt]="image.alt || blok().name"
+          />
+        </figure>
+      }
+    </div>
+
+    <!-- Right arrow -->
+    <button class="carousel-arrow right" (click)="scrollRight()">
+      ›
+    </button>
+  </div>
 </div>
+
+<!-- Lightbox -->
+@if (selectedImage()) {
+  <div class="lightbox" (click)="closeImage()">
+    <img [src]="selectedImage()" />
+  </div>
+}
