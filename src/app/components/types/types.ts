@@ -1,37 +1,50 @@
-export interface StoryImage {
+export interface StoryblokAsset {
   id: number;
   filename: string;
-  alt: string;
-  name: string;
-  focus: string;
-  title: string;
-  source: string;
-  copyright: string;
-  fieldtype: string;
-  meta_data: Record<string, unknown>;
+  alt?: string;
+  title?: string;
+  name?: string;
+  focus?: string;
+  source?: string;
+  copyright?: string;
+  meta_data?: Record<string, unknown>;
 }
 
-export interface StoryContentProject {
-  component: 'Project';
-  description: string;
-  Images: StoryImage[];
-  titre: string;
-  _uid: string;
-  _editable?: string;
-}
-
-export interface Story {
-component: any;
+export interface StoryblokStoryBase<TContent> {
   id: number;
+  uuid: string;
   name: string;
   slug: string;
   full_slug: string;
-  content: StoryContentProject | any; // we only care when it's 'Project'
+  created_at: string;
+  published_at: string;
+  updated_at: string;
+  content: TContent;
 }
 
-/** Shape sent to <app-project [blok]> */
-export interface ProjectBlok {
-  name: string;
-  description: string;
-  Images: StoryImage[];
+export interface StoryblokResponse<TContentUnion> {
+  stories: Array<StoryblokStoryBase<TContentUnion>>;
+  cv: number;
+  rels: unknown[];
+  links: unknown[];
 }
+
+/** Content blocks */
+export interface ProjectContent {
+  component: "Project";
+  titre: string;
+  description: string;
+  Images: StoryblokAsset[];
+}
+
+export interface ProductContent {
+  component: "product";
+  Nom: string;
+  Prix: string;        // e.g. "59€" (keep string unless you normalize)
+  Description: string;
+  condition: string;
+  Photos: StoryblokAsset[];
+}
+
+export type StoryContent = ProjectContent | ProductContent;
+export type Story = StoryblokStoryBase<StoryContent>;

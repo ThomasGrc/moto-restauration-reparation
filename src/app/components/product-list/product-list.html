@@ -1,0 +1,7 @@
+<h1 class="margin-h1">Pièces à vendre</h1>
+
+<div class="product-list">
+  @for (story of products(); track story.id) {
+    <app-products [product]="story.content"></app-products>
+  }
+</div>

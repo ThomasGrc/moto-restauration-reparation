@@ -1,13 +1,60 @@
 <nav class="navbar" #navbar>
   <h1 class="headline">Restauration & Réparation Moto</h1>
 
-  <ul class="nav-buttons">
-    @for (button of buttons; track button.sectionId) {
-      <li>
-        <button type="button" (click)="scrollToSection(button.sectionId)">
-          {{ button.label }}
-        </button>
-      </li>
-    }
-  </ul>
+  @if (!isPhone()) {
+    <ul class="nav-buttons">
+      @for (button of buttons; track button.sectionId) {
+        <li>
+          <button type="button" (click)="scrollToSection(button.sectionId)">
+            {{ button.label }}
+          </button>
+        </li>
+      }
+    </ul>
+  }
 </nav>
+
+@if (isPhone()) {
+  <!-- Always-fixed top-right burger button -->
+  <button
+    type="button"
+    class="burger-fab"
+    [attr.aria-expanded]="menuOpen()"
+    aria-controls="mobile-drawer"
+    aria-label="Open menu"
+    (click)="toggleMenu()"
+  >
+    ☰
+  </button>
+
+  <!-- Overlay + Drawer -->
+  @if (menuOpen()) {
+    <button
+      type="button"
+      class="drawer-overlay"
+      aria-label="Close menu"
+      (click)="closeMenu()"
+    ></button>
+
+    <aside id="mobile-drawer" class="drawer" role="dialog" aria-modal="true">
+      <div class="drawer-header">
+        <span class="drawer-title">Menu</span>
+        <button type="button" class="drawer-close" aria-label="Close menu" (click)="closeMenu()">
+          ✕
+        </button>
+      </div>
+
+      <ul class="drawer-buttons" role="menu">
+        @for (button of buttons; track button.sectionId) {
+          <li>
+            <button type="button" role="menuitem" (click)="scrollToSection(button.sectionId)">
+              {{ button.label }}
+            </button>
+          </li>
+        }
+      </ul>
+    </aside>
+  }
+}
+
+

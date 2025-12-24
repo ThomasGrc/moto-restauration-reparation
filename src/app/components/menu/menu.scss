@@ -1,0 +1,116 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+/* Section wrapper */
+.menu {
+  width: 100%;
+  padding: 3rem 1.5rem;
+}
+
+/* Grid container */
+.menu-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+
+  display: grid;
+  gap: 2rem;
+
+  max-width: 1100px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Each menu item */
+.menu-item {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+}
+
+/* Circular clickable area (router link) */
+.menu-circle {
+  width: 128px;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+
+  display: grid;
+  place-items: center;
+
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+/* Inner disc for depth */
+.menu-circle-inner {
+  width: 70%;
+  height: 70%;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+/* Hover / focus / active states */
+.menu-circle:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.menu-circle:active {
+  transform: translateY(-1px);
+}
+
+.menu-circle:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 6px;
+}
+
+/* Label under the circle */
+.menu-label {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* ===== Responsive breakpoints ===== */
+
+/* Tablet */
+@media (max-width: 900px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .menu-circle {
+    width: 116px;
+  }
+}
+
+/* Phone */
+@media (max-width: 560px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-circle {
+    width: 104px;
+  }
+
+  .menu {
+    padding: 2.5rem 1rem;
+  }
+}

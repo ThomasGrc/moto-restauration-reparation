@@ -2,11 +2,41 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
+
+  // Base color under everything
   background: #0f0f0f;
+
+  // Optional: make it feel more "premium"
+  overflow: hidden; // important so the bg doesn't bleed outside
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    linear-gradient(to left, rgba(15,15,15,0.95), rgba(15,15,15,0.2), rgba(15,15,15,0)),
+    url("/assets/racing-papy.png");
+
+  background-repeat: no-repeat, no-repeat;
+  background-position: 100% 10%, 90% center;
+  background-size: 25%, 25%;
+
+  opacity: 0.8; // controls whole layer; adjust if needed
+}
+
+// Ensure content stays above the background layer
+.headline,
+.nav-buttons {
+  position: relative;
+  z-index: 1;
 }
 
 .headline {
@@ -19,7 +49,7 @@
   gap: 1rem;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin-left: 64px;
 
   button {
     background: none;
@@ -29,7 +59,162 @@
     font-size: 1rem;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: underline 3px red;
     }
   }
+}
+
+/* =========================
+   Mobile burger + right drawer
+   (append-only; does not alter desktop navbar)
+   ========================= */
+
+.burger-fab {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  z-index: 2000; /* above navbar z-index 1000 and its ::before */
+
+  width: 44px;
+  height: 44px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 999px;
+
+  font-size: 20px;
+  line-height: 1;
+
+  color: #0f0f0f;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+/* Optional hover/active affordance */
+.burger-fab:hover {
+  background: #ffffff;
+}
+
+.burger-fab:active {
+  transform: translateY(1px);
+}
+
+/* When the burger is present (mobile), prevent it from overlapping the headline area.
+   This is safe for desktop because burger-fab won't exist there. */
+@media (max-width: 480px) {
+  .navbar {
+    padding-right: 72px;
+  }
+}
+
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+  background: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+}
+
+/* Right-side drawer */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1600;
+
+  height: 100dvh;
+  width: min(86vw, 360px);
+
+  display: flex;
+  flex-direction: column;
+
+  background: #0f0f0f; /* matches navbar base */
+  color: white;
+
+  box-shadow: -18px 0 50px rgba(0, 0, 0, 0.35);
+
+  /* Slide-in */
+  transform: translateX(0);
+  animation: drawer-in 170ms ease-out;
+}
+
+@keyframes drawer-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 14px;
+
+  /* subtle separation */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.drawer-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.drawer-close {
+  border: 0;
+  background: transparent;
+
+  color: white;
+  font-size: 18px;
+  line-height: 1;
+
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.drawer-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.drawer-buttons {
+  list-style: none;
+  padding: 14px;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.drawer-buttons button {
+  width: 100%;
+  text-align: left;
+
+  border: 0;
+  border-radius: 12px;
+
+  padding: 12px 12px;
+
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.drawer-buttons button:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.drawer-buttons button:active {
+  transform: translateY(1px);
 }

@@ -1,9 +1,19 @@
 <app-navbar></app-navbar>
-<section id="top">
+<section id="projets">
     <app-project-list [projects]="projects()"></app-project-list>
+</section>
+<section id="menu">
+    <h1>Autres</h1>
+    <app-menu></app-menu>
 </section>
 <section id="prestations">
     <app-prestations></app-prestations>
+</section>
+<section id="products">
+    <app-product-list [products]="products()"></app-product-list>
+</section>
+<section id="propos">
+    <h1>A Propos</h1>
 </section>
 <section id="contact" class="contact-section">
     <app-contact></app-contact>
