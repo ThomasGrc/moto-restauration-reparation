@@ -1,3 +1,13 @@
-<nav class="navbar">
+<nav class="navbar" #navbar>
   <h1 class="headline">Restauration & Réparation Moto</h1>
+
+  <ul class="nav-buttons">
+    @for (button of buttons; track button.sectionId) {
+      <li>
+        <button type="button" (click)="scrollToSection(button.sectionId)">
+          {{ button.label }}
+        </button>
+      </li>
+    }
+  </ul>
 </nav>

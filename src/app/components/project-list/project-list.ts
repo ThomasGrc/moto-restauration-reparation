@@ -10,6 +10,5 @@ import { Story } from '../types/types';
   imports: [ProjectComponent],
 })
 export class ProjectListComponent {
-  // Input: raw Storyblok stories array (response.stories)
   projects = input<Story[]>([]);
 }
