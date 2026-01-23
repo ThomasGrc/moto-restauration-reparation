@@ -10,7 +10,7 @@ import {
   signal,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -24,12 +24,11 @@ export class Navbar {
 
   @ViewChild('navbar', { static: true })
   private readonly navbarRef!: ElementRef<HTMLElement>;
+  private readonly router = inject(Router);
 
   public readonly buttons = [
-    { label: 'Mes travaux', sectionId: 'projets' },
-    { label: 'Autres', sectionId: 'menu' },
     { label: 'Prestations', sectionId: 'prestations' },
-    { label: 'Pièces', sectionId: 'products' },
+    { label: 'Autres', sectionId: 'menu' },
     { label: 'A propos', sectionId: 'propos' },
     { label: 'Contact', sectionId: 'contact' },
   ];
@@ -86,5 +85,9 @@ export class Navbar {
 
     // Mobile UX: close drawer after navigation
     this.closeMenu();
+  }
+
+  public navigateToHome(): void {
+    this.router.navigateByUrl('/');
   }
 }

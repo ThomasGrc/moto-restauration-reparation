@@ -1,5 +1,5 @@
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1000;
 
@@ -12,6 +12,7 @@
 
   // Optional: make it feel more "premium"
   overflow: hidden; // important so the bg doesn't bleed outside
+  width: 100%;
 }
 
 .navbar::before {
@@ -42,6 +43,7 @@
 .headline {
   color: white;
   font-size: 1.2rem;
+  cursor: pointer
 }
 
 .nav-buttons {

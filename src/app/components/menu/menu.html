@@ -1,19 +1,19 @@
 <section class="menu">
-  <ul class="menu-grid">
+  <div class="menu-grid">
     @for (item of items(); track item.route) {
-      <li class="menu-item">
-        <a
-          class="menu-circle"
-          [routerLink]="item.route"
-          [attr.aria-label]="item.ariaLabel || item.label"
-        >
-          <span class="menu-circle-inner"></span>
-        </a>
+    <div class="menu-item">
+      <a class="menu-circle" [routerLink]="item.route" [attr.aria-label]="item.ariaLabel || item.label">
+        <span class="menu-circle-inner">
+          <span class="menu-circle-inner">
+            <img class="menu-icon" [src]="item.imageSrc" [alt]="item.imageAlt || ''" loading="lazy" decoding="async" />
+          </span>
+        </span>
+      </a>
 
-        <div class="menu-label">
-          {{ item.label }}
-        </div>
-      </li>
+      <div class="menu-label">
+        {{ item.label }}
+      </div>
+    </div>
     }
-  </ul>
+  </div>
 </section>

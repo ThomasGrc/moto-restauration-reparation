@@ -1,6 +1,5 @@
 <nav class="navbar" #navbar>
-  <h1 class="headline">Restauration & Réparation Moto</h1>
-
+  <h1 (click)="navigateToHome()" class="headline">Restauration & Réparation Moto</h1>
   @if (!isPhone()) {
     <ul class="nav-buttons">
       @for (button of buttons; track button.sectionId) {

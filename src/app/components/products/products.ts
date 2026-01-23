@@ -19,5 +19,6 @@ export class Products {
 
   selectPhoto(index: number): void {
     this.selectedIndex.set(index);
+    console.log(this.product()?.condition)
   }
 }

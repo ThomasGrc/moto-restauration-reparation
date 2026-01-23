@@ -7,26 +7,38 @@
 .menu {
   width: 100%;
   padding: 3rem 1.5rem;
+
+  display: flex;
+  justify-content: center;
 }
 
-/* Grid container */
+/* Flex container */
 .menu-grid {
   list-style: none;
   padding: 0;
-  margin: 0 auto;
+  margin: 0;
 
-  display: grid;
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  /* Comfortable spacing */
+  gap: 3rem;
 
   max-width: 1100px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
 }
 
 /* Each menu item */
 .menu-item {
-  display: grid;
-  justify-items: center;
-  gap: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+
+  /* 3 per row on desktop; subtract a bit so 3 + gaps fits reliably */
+  flex: 0 1 calc(33.333% - 2rem);
+  min-width: 220px; /* prevents overly narrow items */
 }
 
 /* Circular clickable area (router link) */
@@ -35,8 +47,9 @@
   aspect-ratio: 1 / 1;
   border-radius: 999px;
 
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   text-decoration: none;
   color: inherit;
@@ -49,22 +62,19 @@
 
   transition:
     transform 160ms ease,
-    box-shadow 160ms ease,
     background 160ms ease;
 }
 
-/* Inner disc for depth */
 .menu-circle-inner {
   width: 70%;
   height: 70%;
   border-radius: 999px;
 
   background: rgba(255, 255, 255, 0.12);
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
 }
 
-/* Hover / focus / active states */
+/* Interaction states */
 .menu-circle:hover {
   transform: translateY(-3px);
   background: rgba(255, 255, 255, 0.1);
@@ -79,7 +89,7 @@
   outline-offset: 6px;
 }
 
-/* Label under the circle */
+/* Label */
 .menu-label {
   text-align: center;
   font-size: 1rem;
@@ -87,12 +97,15 @@
   line-height: 1.25;
 }
 
-/* ===== Responsive breakpoints ===== */
-
-/* Tablet */
+/* Tablet: 2 per row */
 @media (max-width: 900px) {
   .menu-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.5rem;
+  }
+
+  .menu-item {
+    flex-basis: calc(50% - 1.5rem);
+    min-width: 200px;
   }
 
   .menu-circle {
@@ -100,10 +113,15 @@
   }
 }
 
-/* Phone */
+/* Phone: 1 per row */
 @media (max-width: 560px) {
   .menu-grid {
-    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .menu-item {
+    flex-basis: 100%;
+    min-width: 0;
   }
 
   .menu-circle {
