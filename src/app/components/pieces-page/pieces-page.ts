@@ -2,10 +2,11 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { StoryblokService } from '../../services/storyblok.service';
 import { ProductList } from "../product-list/product-list";
 import { Navbar } from "../navbar/navbar";
+import { Contact } from "../contact/contact";
 
 @Component({
   selector: 'app-pieces-page',
-  imports: [ProductList, Navbar],
+  imports: [ProductList, Navbar, Contact],
   templateUrl: './pieces-page.html',
   styleUrl: './pieces-page.scss',
 })

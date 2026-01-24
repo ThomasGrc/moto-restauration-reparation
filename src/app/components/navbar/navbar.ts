@@ -70,24 +70,28 @@ export class Navbar {
     this.menuOpen.set(false);
   }
 
-  public scrollToSection(sectionId: string): void {
-    const section = document.getElementById(sectionId);
-    if (!section) return;
-
-    const navbarHeight = this.navbarRef.nativeElement.offsetHeight;
-
-    const top =
-      section.getBoundingClientRect().top +
-      window.scrollY -
-      navbarHeight;
-
-    window.scrollTo({ top, behavior: 'smooth' });
-
-    // Mobile UX: close drawer after navigation
-    this.closeMenu();
+  public navigateToHome(): void {
+    this.router.navigateByUrl('/').then(() => {
+      this.closeMenu();
+    });
   }
 
-  public navigateToHome(): void {
-    this.router.navigateByUrl('/');
+  public scrollToSection(sectionId: string): void {
+    this.router.navigateByUrl('/').then(() => {
+      const section = document.getElementById(sectionId);
+      if (!section) return;
+
+      const navbarHeight = this.navbarRef.nativeElement.offsetHeight;
+
+      const top =
+        section.getBoundingClientRect().top +
+        window.scrollY -
+        navbarHeight;
+
+      window.scrollTo({ top, behavior: 'smooth' });
+
+      // Mobile UX: close drawer after navigation
+      this.closeMenu();
+    });
   }
 }

@@ -2,10 +2,11 @@ import { Component, inject, signal } from '@angular/core';
 import { ProjectListComponent } from "../project-list/project-list";
 import { StoryblokService } from '../../services/storyblok.service';
 import { Navbar } from '../navbar/navbar';
+import { Contact } from "../contact/contact";
 
 @Component({
   selector: 'app-project-page',
-  imports: [ProjectListComponent, Navbar],
+  imports: [ProjectListComponent, Navbar, Contact],
   templateUrl: './project-page.html',
   styleUrl: './project-page.scss',
 })
