@@ -15,7 +15,8 @@
 
 @if (isPhone()) {
   <!-- Always-fixed top-right burger button -->
-  <button
+  @if (!menuOpen()) {
+      <button
     type="button"
     class="burger-fab"
     [attr.aria-expanded]="menuOpen()"
@@ -25,7 +26,7 @@
   >
     ☰
   </button>
-
+  }
   <!-- Overlay + Drawer -->
   @if (menuOpen()) {
     <button
