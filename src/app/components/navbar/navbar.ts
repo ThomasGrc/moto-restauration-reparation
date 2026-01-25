@@ -39,7 +39,7 @@ export class Navbar {
   );
 
   /* Mobile breakpoint — tune as desired */
-  public readonly isPhone = computed(() => this.viewportWidth() <= 768);
+  public readonly isPhone = computed(() => this.viewportWidth() <= 800);
 
   public readonly menuOpen = signal(false);
 

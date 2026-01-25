@@ -4,22 +4,50 @@
   padding: 16px;
   background: #fff;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  display: grid;
-  gap: 12px;
+
   max-width: 320px;
   margin: 24px;
+
+  /* Make every card the same size */
+  width: 320px;
+  height: 400px;
+
+  /* Deterministic layout */
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 12px;
+
+  /* Required so scroll areas inside can actually scroll */
+  min-height: 0;
 }
 
 .product-card img {
   width: 100%;
   height: 200px;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 12px;
 }
 
+/* Media block */
+.media {
+  display: grid;
+  gap: 10px;
+  min-height: 0;
+}
+
+.main-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Header */
 .product-header {
   display: grid;
   gap: 8px;
+  min-height: 0;
 }
 
 .title-row {
@@ -33,6 +61,11 @@
   margin: 0;
   font-size: 1.1rem;
   line-height: 1.2;
+
+  /* Prevent overly long names from breaking layout */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .price {
@@ -41,30 +74,32 @@
   white-space: nowrap;
 }
 
+/* Scrollable description area */
 .description {
   margin: 0;
   opacity: 0.85;
   line-height: 1.45;
   text-align: justify;
+
+  /* The key: scroll within the fixed-height card */
+  overflow-y: auto;
+  min-height: 0;
+
+  /* Small padding so text doesn't collide with scrollbar */
+  padding-right: 6px;
+
+  /* Optional: nicer scrollbar behavior on touch devices */
+  -webkit-overflow-scrolling: touch;
 }
 
-.media {
-  display: grid;
-  gap: 10px;
-}
-
-.main-image {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 14px;
-  background: rgba(0, 0, 0, 0.03);
-}
-
+/* Thumbnails */
 .thumbs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
   gap: 8px;
+
+  /* Keep thumbs from stretching the card */
+  align-content: start;
 }
 
 .thumb {
@@ -93,6 +128,7 @@
   display: block;
 }
 
+/* Empty media placeholder */
 .media--empty {
   border: 1px dashed rgba(0, 0, 0, 0.18);
   border-radius: 14px;

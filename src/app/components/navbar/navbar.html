@@ -1,60 +1,50 @@
 <nav class="navbar" #navbar>
   <h1 (click)="navigateToHome()" class="headline">Restauration & Réparation Moto</h1>
   @if (!isPhone()) {
-    <ul class="nav-buttons">
-      @for (button of buttons; track button.sectionId) {
-        <li>
-          <button type="button" (click)="scrollToSection(button.sectionId)">
-            {{ button.label }}
-          </button>
-        </li>
-      }
-    </ul>
+  <ul class="nav-buttons">
+    @for (button of buttons; track button.sectionId) {
+    <li>
+      <button type="button" (click)="scrollToSection(button.sectionId)">
+        {{ button.label }}
+      </button>
+    </li>
+    }
+  </ul>
   }
 </nav>
 
 @if (isPhone()) {
-  <!-- Always-fixed top-right burger button -->
-  @if (!menuOpen()) {
-      <button
-    type="button"
-    class="burger-fab"
-    [attr.aria-expanded]="menuOpen()"
-    aria-controls="mobile-drawer"
-    aria-label="Open menu"
-    (click)="toggleMenu()"
-  >
-    ☰
-  </button>
-  }
-  <!-- Overlay + Drawer -->
-  @if (menuOpen()) {
-    <button
-      type="button"
-      class="drawer-overlay"
-      aria-label="Close menu"
-      (click)="closeMenu()"
-    ></button>
-
-    <aside id="mobile-drawer" class="drawer" role="dialog" aria-modal="true">
-      <div class="drawer-header">
-        <span class="drawer-title">Menu</span>
-        <button type="button" class="drawer-close" aria-label="Close menu" (click)="closeMenu()">
-          ✕
-        </button>
-      </div>
-
-      <ul class="drawer-buttons" role="menu">
-        @for (button of buttons; track button.sectionId) {
-          <li>
-            <button type="button" role="menuitem" (click)="scrollToSection(button.sectionId)">
-              {{ button.label }}
-            </button>
-          </li>
-        }
-      </ul>
-    </aside>
-  }
+<!-- Always-fixed top-right burger button -->
+@if (!menuOpen()) {
+<button type="button" class="burger-fab" [attr.aria-expanded]="menuOpen()" aria-controls="mobile-drawer"
+  aria-label="Open menu" (click)="toggleMenu()">
+  ☰
+</button>
 }
+<!-- Overlay + Drawer -->
+@if (menuOpen()) {
+<button type="button" class="drawer-overlay" aria-label="Close menu" (click)="closeMenu()"></button>
 
+<aside id="mobile-drawer" class="drawer" role="dialog" aria-modal="true">
+  <div class="drawer-header">
+    <span class="drawer-title">Menu</span>
+    <button type="button" class="drawer-close" aria-label="Close menu" (click)="closeMenu()">
+      ✕
+    </button>
+  </div>
 
+  <ul class="drawer-buttons" role="menu">
+    @for (button of buttons; track button.sectionId) {
+    <li>
+      <button type="button" role="menuitem" (click)="scrollToSection(button.sectionId)">
+        {{ button.label }}
+      </button>
+    </li>
+    }
+  </ul>
+  <div class="drawer-footer">
+    <img class="drawer-footer__img" src="assets/racing-papy.png" alt="Logo" loading="lazy" />
+  </div>
+</aside>
+}
+}
