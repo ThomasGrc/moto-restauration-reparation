@@ -1,10 +1,14 @@
 <app-navbar></app-navbar>
+
+<app-obj-viewer objUrl="/assets/honda.obj" [autoRotate]="true" [rotationSpeed]="-0.003" [smallScreenScale]="0.6">
+</app-obj-viewer>
+<app-separator class="app-separator-home-page"></app-separator>
+<section id="menu">
+    <h1>Menu</h1>
+    <app-menu></app-menu>
+</section>
 <section id="prestations">
     <app-prestations></app-prestations>
-</section>
-<section id="menu">
-    <h1>Autres</h1>
-    <app-menu></app-menu>
 </section>
 <section id="propos">
     <h1>A Propos</h1>

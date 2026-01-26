@@ -27,8 +27,8 @@ export class Navbar {
   private readonly router = inject(Router);
 
   public readonly buttons = [
+    { label: 'Menu', sectionId: 'menu' },
     { label: 'Prestations', sectionId: 'prestations' },
-    { label: 'Autres', sectionId: 'menu' },
     { label: 'A propos', sectionId: 'propos' },
     { label: 'Contact', sectionId: 'contact' },
   ];
