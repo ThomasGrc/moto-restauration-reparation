@@ -4,3 +4,16 @@
     max-width: 800px;
     text-align: justify;
 }
+
+@media (max-width: 799px) {
+    .prestations-block > p {
+        font-size: smaller;
+    }
+}
+
+@media (max-width: 574px) {
+    .prestations-block > p {
+        font-size: x-small;
+    }
+}
+
