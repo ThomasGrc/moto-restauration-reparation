@@ -12,18 +12,30 @@ import { Separator } from "../separator/separator";
   styleUrl: './pieces-page.scss',
 })
 export class PiecesPage implements OnInit {
-private readonly sb = inject(StoryblokService);
+  private readonly sb = inject(StoryblokService);
   public readonly products = signal<any[]>([]);
 
   async ngOnInit(): Promise<void> {
+    this.scrollToTop();
+
     try {
       const response: any = await this.sb.getProjects();
       const stories: any[] = response?.data?.stories ?? [];
 
-      this.products.set(stories.filter((s) => s?.content?.component === 'product'));
+      this.products.set(
+        stories.filter((s) => s?.content?.component === 'product')
+      );
     } catch (err) {
       console.error('Failed to load Storyblok stories', err);
       this.products.set([]);
     }
+  }
+
+  private scrollToTop(): void {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth' // or 'smooth' if you prefer
+    });
   }
 }
