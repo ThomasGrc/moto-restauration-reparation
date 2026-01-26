@@ -3,10 +3,11 @@ import { StoryblokService } from '../../services/storyblok.service';
 import { ProductList } from "../product-list/product-list";
 import { Navbar } from "../navbar/navbar";
 import { Contact } from "../contact/contact";
+import { Separator } from "../separator/separator";
 
 @Component({
   selector: 'app-pieces-page',
-  imports: [ProductList, Navbar, Contact],
+  imports: [ProductList, Navbar, Contact, Separator],
   templateUrl: './pieces-page.html',
   styleUrl: './pieces-page.scss',
 })

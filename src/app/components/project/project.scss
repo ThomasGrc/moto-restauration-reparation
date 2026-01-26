@@ -3,11 +3,10 @@
     margin: 0.75rem auto;
     padding: 0.9rem;
     border-radius: 0.9rem;
-    background: #0f1015;
-    color: #f7f7f7;
-    box-shadow:
-        0 10px 28px rgba(0, 0, 0, 0.45),
-        0 0 0 1px rgba(255, 255, 255, 0.03);
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -52,7 +51,7 @@
     aspect-ratio: 4 / 3;
     border-radius: 0.75rem;
     overflow: hidden;
-    background: #1a1b27;
+    background: #b0b0b0;
 }
 
 /* Image */
@@ -67,6 +66,7 @@
 @media (hover: hover) {
     .project-image:hover img {
         transform: scale(1.025);
+        cursor: pointer;
     }
 }
 
@@ -93,45 +93,45 @@
 }
 
 .carousel-wrapper {
-  position: relative;
+    position: relative;
 }
 
 /* Arrows */
 .carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
 
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(15, 16, 21, 0.75);
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgb(255, 0, 0);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  transition: background 0.2s ease, transform 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .carousel-arrow:hover {
-  background: rgba(15, 16, 21, 0.95);
+    background: rgba(134, 134, 134, 0.95);
 }
 
 .carousel-arrow.left {
-  left: -12px;
+    left: -12px;
 }
 
 .carousel-arrow.right {
-  right: -12px;
+    right: -12px;
 }
 
 /* Make sure images don't hide behind arrows */
 .project-images {
-  padding: 0 1.75rem;
+    padding: 0 1.75rem;
 }

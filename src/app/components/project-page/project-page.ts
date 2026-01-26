@@ -3,10 +3,11 @@ import { ProjectListComponent } from "../project-list/project-list";
 import { StoryblokService } from '../../services/storyblok.service';
 import { Navbar } from '../navbar/navbar';
 import { Contact } from "../contact/contact";
+import { Separator } from "../separator/separator";
 
 @Component({
   selector: 'app-project-page',
-  imports: [ProjectListComponent, Navbar, Contact],
+  imports: [ProjectListComponent, Navbar, Contact, Separator],
   templateUrl: './project-page.html',
   styleUrl: './project-page.scss',
 })

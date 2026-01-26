@@ -4,44 +4,40 @@
       <h3 class="name">{{ product()?.Nom }}</h3>
       <div class="price">{{ product()?.Prix }}</div>
     </div>
-      <div>condition: {{ product()?.condition }}</div>
+
+    <div class="condition-row">
+      <span [ngClass]="{
+      'condition-neuf': product()?.condition === 'neuf',
+      'condition-occasion': product()?.condition === 'occasion'
+    }">
+        {{ product()?.condition }}
+      </span>
+    </div>
+
     <p class="description">
       {{ product()?.Description }}
     </p>
   </header>
 
   @if (selectedPhoto()) {
-    <div class="media">
-      <img
-        class="main-image"
-        [src]="selectedPhoto()!.filename"
-        [alt]="selectedPhoto()!.alt || product()?.Nom"
-        loading="lazy"
-      />
+  <div class="media">
+    <img class="main-image" [src]="selectedPhoto()!.filename" [alt]="selectedPhoto()!.alt || product()?.Nom"
+      loading="lazy" />
 
-      @if (photos().length > 1) {
-        <div class="thumbs">
-          @for (photo of photos(); track photo.id; let i = $index) {
-            <button
-              type="button"
-              class="thumb"
-              [class.is-active]="i === selectedIndex()"
-              (click)="selectPhoto(i)"
-              aria-label="Voir l’image {{ i + 1 }}"
-            >
-              <img
-                [src]="photo.filename"
-                [alt]="photo.alt || product()?.Nom"
-                loading="lazy"
-              />
-            </button>
-          }
-        </div>
+    @if (photos().length > 1) {
+    <div class="thumbs">
+      @for (photo of photos(); track photo.id; let i = $index) {
+      <button type="button" class="thumb" [class.is-active]="i === selectedIndex()" (click)="selectPhoto(i)"
+        aria-label="Voir l’image {{ i + 1 }}">
+        <img [src]="photo.filename" [alt]="photo.alt || product()?.Nom" loading="lazy" />
+      </button>
       }
     </div>
+    }
+  </div>
   } @else {
-    <div class="media media--empty">
-      <div class="placeholder">Aucune photo disponible</div>
-    </div>
+  <div class="media media--empty">
+    <div class="placeholder">Aucune photo disponible</div>
+  </div>
   }
 </div>

@@ -1,8 +1,8 @@
 <h1 class="margin-h1">Mes travaux</h1>
-<ul>
+<div class="project-container">
   @for (project of projects(); track project) {
     @if (project.slug !== 'home') {
-        <li><app-project [blok]="project" ></app-project></li>
+        <app-project [blok]="project" ></app-project>
     }
     }
-</ul>
+</div>
