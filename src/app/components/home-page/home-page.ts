@@ -5,10 +5,11 @@ import { Prestations } from "../prestations/prestations";
 import { Menu } from "../menu/menu";
 import { Separator } from "../separator/separator";
 import { ObjViewerComponent } from "../obj-viewer/obj-viewer";
+import { TextAnimation } from "../text-animation/text-animation";
 
 @Component({
   selector: 'app-home-page',
-  imports: [Navbar, Contact, Prestations, Menu, Separator, ObjViewerComponent],
+  imports: [Navbar, Contact, Prestations, Menu, Separator, ObjViewerComponent, TextAnimation],
   templateUrl: './home-page.html',
   styleUrl: './home-page.scss',
 })

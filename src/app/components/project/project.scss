@@ -1,12 +1,14 @@
 .project {
     max-width: 420px;
+    height: 420px;
     margin: 0.75rem auto;
     padding: 0.9rem;
     border-radius: 0.9rem;
-    background: #ffffff;
-    color: #000000;
+    background: #e0e0e0;
     box-shadow: 20px 20px 60px #bebebe,
         -20px -20px 60px #ffffff;
+    color: black;
+
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -20,13 +22,36 @@
     letter-spacing: 0.02em;
 }
 
-/* Description */
+/* Description (fills available space; scrolls if too long) */
 .project p {
     margin: 14px;
     font-size: 0.8rem;
     line-height: 1.4;
     opacity: 0.8;
     text-align: justify;
+
+    flex: 1 1 auto;
+    /* take remaining vertical space */
+    min-height: 0;
+    /* IMPORTANT for overflow to work inside flex */
+    overflow-y: auto;
+    /* scroll instead of pushing carousel */
+    height: 148px;
+}
+
+.project p::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+    border-radius: 3px;
+    color: grey;
+}
+
+/* Wrap carousel + arrows and pin it to bottom */
+.carousel-wrapper {
+    position: relative;
+    margin-top: auto;
+    /* pushes carousel to bottom of the card */
+    min-height: 0;
 }
 
 /* Carousel */
@@ -38,6 +63,11 @@
     padding-bottom: 0.25rem;
 
     scrollbar-width: none;
+}
+
+/* Make sure images don't hide behind arrows */
+.project-images {
+    padding: 0 1.75rem 0.25rem;
 }
 
 .project-images::-webkit-scrollbar {
@@ -60,6 +90,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.2s ease;
 }
 
 /* Desktop hover (subtle) */
@@ -90,10 +121,6 @@
     object-fit: contain;
     border-radius: 0.5rem;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
-}
-
-.carousel-wrapper {
-    position: relative;
 }
 
 /* Arrows */
@@ -129,9 +156,4 @@
 
 .carousel-arrow.right {
     right: -12px;
-}
-
-/* Make sure images don't hide behind arrows */
-.project-images {
-    padding: 0 1.75rem;
 }

@@ -11,5 +11,20 @@ section {
 
 .app-separator-home-page {
   display: block;
-  transform: translateY(-70px);;
+  transform: translateY(-70px);
+  ;
+}
+
+@media screen and (max-width: 768px) {
+  .about-text {
+    text-align: center;
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .about-text {
+    text-align: center;
+    width: 60%;
+  }
 }

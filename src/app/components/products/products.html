@@ -6,12 +6,22 @@
     </div>
 
     <div class="condition-row">
-      <span [ngClass]="{
+      @if (product()?.leboncoin_url) {
+        <div>
+          <button (click)="redirectToLeboncoinProductPage()" class="leboncoin-button">Leboncoin</button>
+        </div>
+      }
+      <div>
+        <strong>Etat: </strong>
+        <span [ngClass]="{
       'condition-neuf': product()?.condition === 'neuf',
-      'condition-occasion': product()?.condition === 'occasion'
+      'condition-good': product()?.condition === 'bon',
+      'condition-used': product()?.condition === 'usé',
     }">
-        {{ product()?.condition }}
-      </span>
+          {{ product()?.condition }}
+        </span>
+      </div>
+
     </div>
 
     <p class="description">

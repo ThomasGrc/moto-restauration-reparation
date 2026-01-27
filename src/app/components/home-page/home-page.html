@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<app-text-animation></app-text-animation>
 <app-obj-viewer objUrl="/assets/honda.obj" [autoRotate]="true" [rotationSpeed]="-0.003" [smallScreenScale]="0.6">
 </app-obj-viewer>
 <app-separator class="app-separator-home-page"></app-separator>
@@ -10,7 +11,13 @@
     <app-prestations></app-prestations>
 </section>
 <section id="propos">
-    <h1>A Propos</h1>
+    <h1 class="margin-h1">A Propos</h1>
+    <p class="about-text">
+        Technicien qualifié, je vous propose de réparer ou restaurer votre moto ancienne. Toutes ces motos dont les
+        professionnels ne veulent plus entendre parler.
+        Sentimentaliste, amoureux de la moto de votre jeunesse.
+        Vous êtes les biens venus.
+    </p>
 </section>
 <app-separator></app-separator>
 <section id="contact" class="contact-section">

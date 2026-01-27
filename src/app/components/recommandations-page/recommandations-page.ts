@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Contact } from "../contact/contact";
 import { Navbar } from "../navbar/navbar";
 import { Separator } from "../separator/separator";
@@ -10,8 +11,12 @@ import { Separator } from "../separator/separator";
   styleUrl: './recommandations-page.scss',
 })
 export class RecommandationsPage implements OnInit {
+  private readonly platformId = inject(PLATFORM_ID)
+
   async ngOnInit() {
-    this.scrollToTop();
+    if (isPlatformBrowser(this.platformId)) {
+      this.scrollToTop();
+    }
   }
 
   private scrollToTop(): void {

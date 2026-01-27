@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class Contact {
 
+  redirectToFacebook(): void {
+    const facebookUrl = 'https://www.facebook.com/DidierMenguy83/';
+    window.open(facebookUrl, '_blank');
+    console.log('Redirecting to Facebook page:', facebookUrl);
+  }
 }

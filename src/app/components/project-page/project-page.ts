@@ -1,9 +1,10 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { ProjectListComponent } from "../project-list/project-list";
 import { StoryblokService } from '../../services/storyblok.service';
 import { Navbar } from '../navbar/navbar';
 import { Contact } from "../contact/contact";
 import { Separator } from "../separator/separator";
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-project-page',
@@ -14,9 +15,12 @@ import { Separator } from "../separator/separator";
 export class ProjectPage implements OnInit {
   private readonly sb = inject(StoryblokService);
   public readonly projects = signal<any[]>([]);
+  private readonly platformId = inject(PLATFORM_ID);
 
   async ngOnInit(): Promise<void> {
-    this.scrollToTop();
+    if (isPlatformBrowser(this.platformId)) {
+      this.scrollToTop();
+    }
 
     try {
       const response: any = await this.sb.getProjects();

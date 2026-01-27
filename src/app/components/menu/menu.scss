@@ -36,7 +36,8 @@
 
   /* 3 per row on desktop; subtract a bit so 3 + gaps fits reliably */
   flex: 0 1 calc(33.333% - 2rem);
-  min-width: 220px; /* prevents overly narrow items */
+  min-width: 220px;
+  /* prevents overly narrow items */
 }
 
 /* Circular clickable area (router link) */
@@ -53,10 +54,10 @@
   color: inherit;
   cursor: pointer;
 
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow:
-    0 14px 40px rgba(0, 0, 0, 0.25),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  background: #e0e0e0;
+  box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
 
   transition:
     transform 160ms ease,
@@ -124,9 +125,5 @@
 
   .menu-circle {
     width: 104px;
-  }
-
-  .menu {
-    padding: 2.5rem 1rem;
   }
 }

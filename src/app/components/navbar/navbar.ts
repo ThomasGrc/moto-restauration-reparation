@@ -77,21 +77,23 @@ export class Navbar {
   }
 
   public scrollToSection(sectionId: string): void {
-    this.router.navigateByUrl('/').then(() => {
-      const section = document.getElementById(sectionId);
-      if (!section) return;
+    if (isPlatformBrowser(this.platformId)) {
+      this.router.navigateByUrl('/').then(() => {
+        const section = document.getElementById(sectionId);
+        if (!section) return;
 
-      const navbarHeight = this.navbarRef.nativeElement.offsetHeight;
+        const navbarHeight = this.navbarRef.nativeElement.offsetHeight;
 
-      const top =
-        section.getBoundingClientRect().top +
-        window.scrollY -
-        navbarHeight;
+        const top =
+          section.getBoundingClientRect().top +
+          window.scrollY -
+          navbarHeight;
 
-      window.scrollTo({ top, behavior: 'smooth' });
+        window.scrollTo({ top, behavior: 'smooth' });
 
-      // Mobile UX: close drawer after navigation
-      this.closeMenu();
-    });
+        // Mobile UX: close drawer after navigation
+        this.closeMenu();
+      });
+    }
   }
 }

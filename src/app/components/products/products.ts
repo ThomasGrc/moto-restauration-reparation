@@ -19,6 +19,13 @@ export class Products {
 
   selectPhoto(index: number): void {
     this.selectedIndex.set(index);
-    console.log(this.product()?.condition)
+    console.log(this.product())
+  }
+
+  redirectToLeboncoinProductPage(): void {
+    const url = this.product()?.leboncoin_url;
+    if (url) {
+      window.open(url, '_blank');
+    }
   }
 }

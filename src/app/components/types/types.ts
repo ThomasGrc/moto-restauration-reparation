@@ -43,6 +43,7 @@ export interface ProductContent {
   Prix: string;        // e.g. "59€" (keep string unless you normalize)
   Description: string;
   condition: string;
+  leboncoin_url: string;
   Photos: StoryblokAsset[];
 }
 
